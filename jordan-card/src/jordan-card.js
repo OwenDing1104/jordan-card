@@ -1,52 +1,70 @@
 import { LitElement, html, css } from 'lit';
 
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
-
 class JordanCard extends LitElement {
   static properties = {
     header: { type: String },
   };
 
   static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
+    .card {
+      max-width: 400px;
+      margin: 10px;
+      background-color: pink;
       text-align: center;
-      background-color: var(--jordan-card-background-color);
+      padding: 6px;
+      border-radius: 6px;
     }
 
-    main {
-      flex-grow: 1;
+    /* The heading setting in the card */
+    .card h1 {
+      font-size: 36px;
+      color: #ce1141;
     }
 
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
+    /* The second heading setting in the card */
+    .card h2 {
+      font-size: 30px;
+      color: #ce1141;
     }
 
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
+    /* The content setting in the card */
+    .card p {
+      font-size: 16px;
+      color: black;
+    }
+
+    .card img {
+      width: 85%;
+      height: auto;
+    }
+
+    /*The button setting in the card*/
+    .button1 {
+      margin: 24px auto;
+    }
+    .button1 button {
+      font-size: 20px;
+      color: #ce1141;
+      background-color: white;
+      padding: 4px;
+    }
+
+    .button1 button:hover,
+    .button1 button:focus {
+      color: white;
+      background-color: #ce1141;
+    }
+
+    @media only screen and (min-width: 800px) {
+      #detail1 {
+        display: incline-block;
       }
-      to {
-        transform: rotate(360deg);
+    }
+
+    @media only screen and (max-width: 799px) {
+      #detail1 {
+        display: none;
       }
-    }
-
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
-    }
-
-    .app-footer a {
-      margin-left: 5px;
     }
   `;
 
@@ -57,30 +75,34 @@ class JordanCard extends LitElement {
 
   render() {
     return html`
-      <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.header}</h1>
-
-        <p>Edit <code>src/JordanCard.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
-      </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+      <div class="card">
+        <h1>NBA Superstar</h1>
+        <img
+          src="https://thumbs.dreamstime.com/b/michael-jordan-chicago-bulls-superstar-image-taken-color-slide-73861883.jpg"
+          alt="Jordan"
+        />
+        <div class="content">
+          <h2><b>Michael Jordan</b></h2>
+          <p>
+            Michael Jeffrey Jordan (born February 17, 1963), also known by his
+            initials MJ, is an American former professional basketball player
+            and businessman. Widely considered the greatest basketball player of
+            all time, the official National Basketball Association (NBA) website
+            states that "by acclamation, Michael Jordan is the greatest
+            basketball player of all time." He played fifteen seasons in the
+            NBA, winning six NBA championships with the Chicago Bulls. He was
+            integral in popularizing the sport of basketball and the NBA around
+            the world in the 1980s and 1990s, becoming a global cultural icon.
+          </p>
+          <div class="button1">
+            <button id="detail1">Details</button>
+          </div>
+        </div>
+      </div>
+      <button id="cloneButton1">CloneCard</button>
+      <button id="color1">ColorCard</button>
+      <button id="heading1">ChangeHeading</button>
+      <button id="delete1">Delete</button>
     `;
   }
 }
