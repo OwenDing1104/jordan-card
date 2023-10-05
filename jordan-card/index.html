@@ -78,49 +78,49 @@
       <button id="delete1">Delete</button>
 
       <script>
-        const card = document.querySelector('.card');
-  
+        const cards = document.querySelectorAll('.card');
+
         document.querySelector('#cloneButton1').addEventListener('click', (e) => {
-          const clone = card.cloneNode(true);
-          document.body.appendChild(clone);
+            const clone = cards[0].cloneNode(true);
+            document.body.appendChild(clone);
         });
-  
-        card.addEventListener('mouseover', function() {
-          card.style.backgroundColor = 'yellow';
-        });
-        card.addEventListener('mouseout', function() {
-          card.style.backgroundColor = 'pink';
-        });
-  
+
         document.querySelector('#color1').addEventListener('click', function() {
-          if (card.style.backgroundColor === 'black') {
-            card.style.backgroundColor = 'purple';
-          } else {
-            card.style.backgroundColor = 'black';
-          }
+            cards.forEach(card => {
+                if (card.style.backgroundColor === 'black') {
+                    card.style.backgroundColor = 'purple';
+                } else {
+                    card.style.backgroundColor = 'black';
+                }
+            });
         });
-  
+
         document.querySelector('#heading1').addEventListener('click', function() {
-          const heading2 = document.querySelector('.card h1');
-          const newHeading = prompt("New heading pls:");
-          if (newHeading) {
-            heading2.textContent = newHeading;
-          }
+            const newHeading = prompt("New heading pls:");
+            if (newHeading) {
+                cards.forEach(card => {
+                    const heading = card.querySelector('h1');
+                    heading.textContent = newHeading;
+                });
+            }
         });
-  
+
         document.querySelector('#delete1').addEventListener('click', function() {
-          const cards = document.querySelectorAll('.card');
-          if (cards.length > 1) {
-            cards[cards.length - 1].remove();
-          }
+            const allCards = document.querySelectorAll('.card');
+            if (allCards.length > 1) {
+                allCards[allCards.length - 1].remove();
+            }
         });
-  
+
         document.querySelector('#detail1').addEventListener('click', function() {
-          const information = document.querySelector('.card p');
-          if (information.style.display === 'none') {
-            information.style.display = 'block';
-          } else {
-            information.style.display = 'none';
-          }
+            cards.forEach(card => {
+                const information = card.querySelector('p');
+                if (information.style.display === 'none') {
+                    information.style.display = 'block';
+                } else {
+                    information.style.display = 'none';
+                }
+            });
         });
+
       </script>
