@@ -1,5 +1,9 @@
     <title>Jordan Card</title>
     <style>
+      .cards {
+        display:flex;
+      }
+
       .card {
         max-width: 400px;
         margin: 10px;
@@ -50,7 +54,7 @@
 
       @media only screen and (min-width: 800px) {
         #detail1 {
-          display:incline-block;
+          display:inline-block;
         }
       }
 
@@ -60,17 +64,19 @@
         }
       }
     </style>
-    <div class="card">
-      <h1>NBA Superstar</h1>
-      <img src="https://thumbs.dreamstime.com/b/michael-jordan-chicago-bulls-superstar-image-taken-color-slide-73861883.jpg" alt="Jordan">
-      <div class="content">
-      <h2><b>Michael Jordan</b></h2>
-        <p>Michael Jeffrey Jordan (born February 17, 1963), also known by his initials MJ, is an American former professional basketball player and businessman. Widely considered the greatest basketball player of all time, the official National Basketball Association (NBA) website states that "by acclamation, Michael Jordan is the greatest basketball player of all time." He played fifteen seasons in the NBA, winning six NBA championships with the Chicago Bulls. He was integral in popularizing the sport of basketball and the NBA around the world in the 1980s and 1990s, becoming a global cultural icon.</p>
-      <div class="button1" >
-      <button id =detail1 >Details</button>
+      <div class="cards">
+        <div class="card">
+          <h1>NBA Superstar</h1>
+          <img src="https://thumbs.dreamstime.com/b/michael-jordan-chicago-bulls-superstar-image-taken-color-slide-73861883.jpg" alt="Jordan">
+          <div class="content">
+          <h2><b>Michael Jordan</b></h2>
+            <p>Michael Jeffrey Jordan (born February 17, 1963), also known by his initials MJ, is an American former professional basketball player and businessman. Widely considered the greatest basketball player of all time, the official National Basketball Association (NBA) website states that "by acclamation, Michael Jordan is the greatest basketball player of all time." He played fifteen seasons in the NBA, winning six NBA championships with the Chicago Bulls. He was integral in popularizing the sport of basketball and the NBA around the world in the 1980s and 1990s, becoming a global cultural icon.</p>
+          <div class="button1" >
+          <button id =detail1 >Details</button>
+          </div>
+          </div> 
+        </div>
       </div>
-      </div> 
-    </div>
       
       <button id="cloneButton1">CloneCard</button>
       <button id="color1">ColorCard</button>
@@ -80,10 +86,13 @@
       <script>
         const card = document.querySelector('.card');
   
+        const cardsContainer = document.querySelector('.cards');
+
         document.querySelector('#cloneButton1').addEventListener('click', (e) => {
-          const clone = card.cloneNode(true);
-          document.body.appendChild(clone);
+            const clone = card.cloneNode(true);
+            cardsContainer.appendChild(clone); // Append to the .cards container
         });
+
   
         card.addEventListener('mouseover', function() {
           card.style.backgroundColor = 'yellow';
