@@ -88,48 +88,59 @@
   
         const cardsContainer = document.querySelector('.cards');
 
-        document.querySelector('#cloneButton1').addEventListener('click', (e) => {
-            const clone = card.cloneNode(true);
-            cardsContainer.appendChild(clone); // Append to the .cards container
+        function attachCardEventListeners(card) {
+            card.addEventListener('mouseover', function() {
+                card.style.backgroundColor = 'yellow';
+            });
+            card.addEventListener('mouseout', function() {
+                card.style.backgroundColor = 'pink';
+            });
+        }
+
+        // Attach event listeners to the initial card
+        document.querySelectorAll('.card').forEach(card => {
+            attachCardEventListeners(card);
         });
 
-  
-        card.addEventListener('mouseover', function() {
-          card.style.backgroundColor = 'yellow';
+        document.querySelector('#cloneButton1').addEventListener('click', (e) => {
+            const clone = card.cloneNode(true);
+            cardsContainer.appendChild(clone);
+            attachCardEventListeners(clone); // Attach event listeners to the cloned card
         });
-        card.addEventListener('mouseout', function() {
-          card.style.backgroundColor = 'pink';
-        });
-  
+
         document.querySelector('#color1').addEventListener('click', function() {
-          if (card.style.backgroundColor === 'black') {
-            card.style.backgroundColor = 'purple';
-          } else {
-            card.style.backgroundColor = 'black';
-          }
+            document.querySelectorAll('.card').forEach(card => {
+                if (card.style.backgroundColor === 'black') {
+                    card.style.backgroundColor = 'purple';
+                } else {
+                    card.style.backgroundColor = 'black';
+                }
+            });
         });
-  
+
         document.querySelector('#heading1').addEventListener('click', function() {
-          const heading2 = document.querySelector('.card h1');
-          const newHeading = prompt("New heading pls:");
-          if (newHeading) {
-            heading2.textContent = newHeading;
-          }
+            const newHeading = prompt("New heading pls:");
+            if (newHeading) {
+                document.querySelectorAll('.card h1').forEach(heading => {
+                    heading.textContent = newHeading;
+                });
+            }
         });
-  
+
         document.querySelector('#delete1').addEventListener('click', function() {
-          const cards = document.querySelectorAll('.card');
-          if (cards.length > 1) {
-            cards[cards.length - 1].remove();
-          }
+            const cards = document.querySelectorAll('.card');
+            if (cards.length > 1) {
+                cards[cards.length - 1].remove();
+            }
         });
-  
+
         document.querySelector('#detail1').addEventListener('click', function() {
-          const information = document.querySelector('.card p');
-          if (information.style.display === 'none') {
-            information.style.display = 'block';
-          } else {
-            information.style.display = 'none';
-          }
+            document.querySelectorAll('.card p').forEach(information => {
+                if (information.style.display === 'none') {
+                    information.style.display = 'block';
+                } else {
+                    information.style.display = 'none';
+                }
+            });
         });
       </script>
