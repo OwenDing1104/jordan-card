@@ -1,0 +1,22 @@
+{
+  "name": "jordan-card2",
+  "version": "1.0.0",
+  "description": "First try",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OwenDing1104/jordan-card.git"
+  },
+  "keywords": [
+    "jordan-card"
+  ],
+  "author": "OwenDing",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OwenDing1104/jordan-card/issues"
+  },
+  "homepage": "https://github.com/OwenDing1104/jordan-card#readme"
+}
